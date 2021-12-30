@@ -11,14 +11,6 @@ form {
   }
   width: 45%;
 
-  &:nth-child(1),&:nth-child(2) {
-    grid-row: 1 / 2;
-  }
-
-  &:nth-child(3),&:nth-child(4) {
-    grid-row: 2 / 3;
-  }
-
   label {
     font-weight: bold;
     grid-column: 1 / 2;
@@ -26,5 +18,16 @@ form {
 
   input {
     grid-column: 2 / 4;
+  }
+
+  button {
+    grid-row: 5;
+    grid-column: 1 / 4;
+    padding: 10px 0;
+  }
+
+  #err {
+    color: red;
+    grid-column: 1 / 4;
   }
 }
