@@ -24,7 +24,7 @@
   const authenticate = () => {
     if (!alias) return (err = 'No alias');
 
-    gun.auth(alias, pass, (ack) => {
+    gun.user().auth(alias, pass, (ack) => {
       if ('err' in ack) {
         err = ack.err;
       } else {
@@ -37,6 +37,8 @@
 </script>
 
 <form autocomplete="off" on:submit|preventDefault={submit}>
+  <h2>{authType} user</h2>
+
   <label for="{authType}-alias">alias</label>
   <input type="text" name="alias" id="{authType}-alias" bind:value={alias} />
 
@@ -56,8 +58,12 @@
     align-items: center;
 
     row-gap: 10px;
-
     width: 100%;
+
+    h2 {
+      text-align: center;
+      grid-column: 1 / 4;
+    }
 
     label {
       font-weight: bold;
