@@ -23,19 +23,38 @@
 </script>
 
 <main>
-  <form autocomplete="off" on:submit|preventDefault={submit}>
-    <label for="username">username</label>
-    <input type="text" name="username" id="username" bind:value={user} />
+  <div class="col" id="first">
+    <form autocomplete="off" on:submit|preventDefault={submit}>
+      <label for="username">username</label>
+      <input type="text" name="username" id="username" bind:value={user} />
 
-    <label for="passphrase">passphrase</label>
-    <input
-      type="password"
-      name="passphrase"
-      id="passphrase"
-      bind:value={pass} />
+      <label for="passphrase">passphrase</label>
+      <input
+        type="password"
+        name="passphrase"
+        id="passphrase"
+        bind:value={pass} />
 
-    <button type="submit">create</button>
+      <button type="submit">create</button>
 
-    <span id="err"><strong>Error:</strong> {err ?? 'none'}</span>
-  </form>
+      <span id="err"><strong>Error:</strong> {err ?? 'none'}</span>
+    </form>
+  </div>
+  <div class="col" id="second">
+    <form autocomplete="off" on:submit|preventDefault={submit}>
+      <label for="username">username</label>
+      <input type="text" name="username" id="username" bind:value={user} />
+
+      <label for="passphrase">passphrase</label>
+      <input
+        type="password"
+        name="passphrase"
+        id="passphrase"
+        bind:value={pass} />
+
+      <button type="submit">create</button>
+
+      <span id="err"><strong>Error:</strong> {err ?? 'none'}</span>
+    </form>
+  </div>
 </main>
