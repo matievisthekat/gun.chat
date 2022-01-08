@@ -24,34 +24,3 @@ main {
     }
   }
 }
-
-form {
-  display: grid;
-
-  justify-content: space-evenly;
-  align-items: center;
-
-  row-gap: 10px;
-
-  width: 100%;
-
-  label {
-    font-weight: bold;
-    grid-column: 1 / 2;
-  }
-
-  input {
-    grid-column: 2 / 4;
-  }
-
-  button {
-    grid-row: 5;
-    grid-column: 1 / 4;
-    padding: 10px 0;
-  }
-
-  #err {
-    color: red;
-    grid-column: 1 / 4;
-  }
-}

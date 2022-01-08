@@ -20,7 +20,7 @@
       }
     });
   };
-  
+
   const authenticate = () => {
     if (!alias) return (err = 'No alias');
 
@@ -37,13 +37,46 @@
 </script>
 
 <form autocomplete="off" on:submit|preventDefault={submit}>
-  <label for="alias">alias</label>
-  <input type="text" name="alias" id="alias" bind:value={alias} />
+  <label for="{authType}-alias">alias</label>
+  <input type="text" name="alias" id="{authType}-alias" bind:value={alias} />
 
-  <label for="passphrase">passphrase</label>
-  <input type="password" name="passphrase" id="passphrase" bind:value={pass} />
+  <label for="{authType}-pass">passphrase</label>
+  <input type="password" name="pass" id="{authType}-pass" bind:value={pass} />
 
   <button type="submit">{authType}</button>
 
-  <span id="err"><strong>Error:</strong> {err ?? 'none'}</span>
+  <span class="err"><strong>Error:</strong> {err ?? 'none'}</span>
 </form>
+
+<style type="scss">
+  form {
+    display: grid;
+
+    justify-content: space-evenly;
+    align-items: center;
+
+    row-gap: 10px;
+
+    width: 100%;
+
+    label {
+      font-weight: bold;
+      grid-column: 1 / 2;
+    }
+
+    input {
+      grid-column: 2 / 4;
+    }
+
+    button {
+      grid-row: 5;
+      grid-column: 1 / 4;
+      padding: 10px 0;
+    }
+
+    .err {
+      color: red;
+      grid-column: 1 / 4;
+    }
+  }
+</style>
