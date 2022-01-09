@@ -2,10 +2,9 @@
   import type {User} from '../types';
   import '../assets/styles/pages/Index.scss';
   import AuthForm from '../components/AuthForm.svelte';
-  import GUN from 'gun';
-  import 'gun/sea';
+  import {loadGun} from '../util';
 
-  const gun = GUN(['http://localhost:8765/gun']);
+  const gun = loadGun();
   const onAuthenticated = (usr: User) => {};
 </script>
 
