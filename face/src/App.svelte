@@ -1,19 +1,11 @@
-<script lang="ts">
-  import type {User} from './types';
-  import './assets/styles/App.scss';
-  import AuthForm from './components/AuthForm.svelte';
-  import GUN from 'gun';
-  import 'gun/sea';
+<!-- App.svelte -->
+<script>
+  import {Router, Route} from 'svelte-routing';
+  import Index from './pages/Index.svelte';
 
-  const gun = GUN(['http://localhost:8765/gun']);
-  const onAuthenticated = (usr: User) => {};
+  export let url = '';
 </script>
 
-<main>
-  <div class="col" id="first">
-    <AuthForm authType="create" {gun} {onAuthenticated} />
-  </div>
-  <div class="col" id="second">
-    <AuthForm authType="authenticate" {gun} {onAuthenticated} />
-  </div>
-</main>
+<Router {url}>
+  <Route path="/"><Index /></Route>
+</Router>
