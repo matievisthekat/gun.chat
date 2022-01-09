@@ -13,7 +13,7 @@ export default [
   {
     input: 'src/main.ts',
     output: {
-      dir: 'dist/browser',
+      file: 'dist/browser/App.js',
       name: 'app',
       format: 'iife',
       sourcemap: true
@@ -43,7 +43,7 @@ export default [
     output: {
       exports: 'default',
       name: 'app',
-      dir: 'dist/server',
+      file: 'dist/server/App.js',
       format: 'cjs',
       sourcemap: true
     },
