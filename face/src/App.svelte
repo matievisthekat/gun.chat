@@ -8,6 +8,6 @@
 </script>
 
 <Router {url}>
-  <Route path="/"><Index /></Route>
-  <Route path="/@:pub" let:params><User /></Route>
+  <Route path="/" component={Index} />
+  <Route path="/:pub" let:params component={User} />
 </Router>
