@@ -6,4 +6,4 @@
   export let pub = '';
 </script>
 
-<h1>{pub}</h1>
+<h1>Pub: {pub}</h1>
