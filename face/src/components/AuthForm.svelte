@@ -1,10 +1,10 @@
 <script lang="ts">
   import type {IGunChainReference} from 'gun/types/chain';
-  import type {AuthType, User} from 'src/types';
+  import type {Ack, AuthType} from 'src/types';
 
   export let authType: AuthType;
   export let gun: IGunChainReference<any, any, any>;
-  export let onAuthenticated: (user: User) => void;
+  export let onAuthenticated: (ack: Ack) => void;
   let alias: string;
   let pass: string;
   let err: string;
@@ -28,7 +28,7 @@
       if ('err' in ack) {
         err = ack.err;
       } else {
-        onAuthenticated({alias, pass});
+        onAuthenticated(ack);
       }
     });
   };
