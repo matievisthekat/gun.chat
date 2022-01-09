@@ -9,31 +9,56 @@ import sveltePreprocess from 'svelte-preprocess';
 
 const isDev = Boolean(process.env.ROLLUP_WATCH);
 
-export default {
-  input: 'src/main.ts',
-  output: {
-    file: 'public/bundle.js',
-    name: 'app',
-    format: 'iife',
-    sourcemap: true
-  },
-  plugins: [
-    svelte({
-      preprocess: sveltePreprocess(),
-      compilerOptions: {
-        hydratable: true,
-        generate: 'ssr'
-      }
-    }),
-    resolve({browser: true}),
-    typescript(),
-    scss(),
-    commonjs(),
-    isDev &&
-      livereload({
-        watch: 'public/App.js',
-        delay: 200
+export default [
+  {
+    input: 'src/main.ts',
+    output: {
+      dir: 'dist/browser',
+      name: 'app',
+      format: 'iife',
+      sourcemap: true
+    },
+    plugins: [
+      svelte({
+        preprocess: sveltePreprocess(),
+        compilerOptions: {
+          hydratable: true,
+          generate: 'ssr'
+        }
       }),
-    !isDev && terser()
-  ]
-};
+      resolve({browser: true}),
+      typescript(),
+      scss(),
+      commonjs(),
+      isDev &&
+        livereload({
+          watch: 'dist/server/App.js',
+          delay: 200
+        }),
+      !isDev && terser()
+    ]
+  },
+  {
+    input: 'src/App.svelte',
+    output: {
+      exports: 'default',
+      name: 'app',
+      dir: 'dist/server',
+      format: 'cjs',
+      sourcemap: true
+    },
+    plugins: [
+      svelte({
+        preprocess: sveltePreprocess(),
+        compilerOptions: {
+          generate: 'ssr'
+        }
+      }),
+      resolve(),
+      typescript(),
+      scss(),
+      commonjs(),
+      !isDev && terser()
+    ]
+  }
+];
